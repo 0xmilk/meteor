@@ -1026,6 +1026,20 @@ Template.api.logout = {
   ]
 };
 
+Template.api.logoutOtherClients = {
+  id: "meteor_logout_other_clients",
+  name: "Meteor.logoutOtherClients([callback])",
+  locus: "Client",
+  descr: ["Log out other clients logged in as the current user, but does not log out the client that calls this function."],
+  args: [
+    {
+      name: "callback",
+      type: "Function",
+      descr: "Optional callback. Called with no arguments on success, or with a single `Error` argument on failure."
+    }
+  ]
+};
+
 
 Template.api.loginWithPassword = {
   id: "meteor_loginwithpassword",
@@ -1100,6 +1114,11 @@ Template.api.accounts_config = {
       name: "forbidClientAccountCreation",
       type: "Boolean",
       descr: "Calls to [`createUser`](#accounts_createuser) from the client will be rejected. In addition, if you are using [accounts-ui](#accountsui), the \"Create account\" link will not be available."
+    },
+    {
+      name: "loginExpirationInDays",
+      type: "Number",
+      descr: "The number of days from when a user logs in until their token expires and they are logged out. Defaults to 90. Set to `null` to disable login expiration."
     }
   ]
 };
